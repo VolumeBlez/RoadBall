@@ -1,5 +1,5 @@
 using UnityEngine;
-using System;
+
 
 public class Corridor : MonoBehaviour
 { 
@@ -8,19 +8,18 @@ public class Corridor : MonoBehaviour
     [SerializeField] private Transform _end;
     [SerializeField] private DirectionType _beginDirectionType;
     [SerializeField] private DirectionType _endDirectionType;
+    [SerializeField] private CorridorTurnTrigger _trigger;
 
-    public Action<Corridor> PlayerCheckTheTurn;
-
+    public CorridorTurnTrigger TurnTrigger => _trigger;
     public Transform End => _end;
     public Transform Begin => _begin;
     public DirectionType BeginDirection => _beginDirectionType;
     public DirectionType EndDirection => _endDirectionType;
     public Vector2 DirectionToTurn => _directionToTurn;
 
-
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Init() 
     {
-        PlayerCheckTheTurn?.Invoke(this);
+        _trigger.Init(this);
     }
+
 }
