@@ -35,16 +35,25 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeMusic"",
+                    ""type"": ""Button"",
+                    ""id"": ""b455c109-b691-4601-b1d7-7a71b5192726"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""4fe3e133-2603-463d-8c5f-43dbf7dcb3df"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Joystick>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""New control scheme"",
+                    ""groups"": """",
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -57,6 +66,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
                     ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c33ce0f0-9b3c-48ff-918b-da077bde1639"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeMusic"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -74,6 +94,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         // GamePlay
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_Turn = m_GamePlay.FindAction("Turn", throwIfNotFound: true);
+        m_GamePlay_ChangeMusic = m_GamePlay.FindAction("ChangeMusic", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -134,11 +155,13 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GamePlay;
     private IGamePlayActions m_GamePlayActionsCallbackInterface;
     private readonly InputAction m_GamePlay_Turn;
+    private readonly InputAction m_GamePlay_ChangeMusic;
     public struct GamePlayActions
     {
         private @Input m_Wrapper;
         public GamePlayActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Turn => m_Wrapper.m_GamePlay_Turn;
+        public InputAction @ChangeMusic => m_Wrapper.m_GamePlay_ChangeMusic;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -151,6 +174,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Turn.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTurn;
                 @Turn.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTurn;
                 @Turn.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnTurn;
+                @ChangeMusic.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeMusic;
+                @ChangeMusic.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeMusic;
+                @ChangeMusic.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeMusic;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -158,6 +184,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Turn.started += instance.OnTurn;
                 @Turn.performed += instance.OnTurn;
                 @Turn.canceled += instance.OnTurn;
+                @ChangeMusic.started += instance.OnChangeMusic;
+                @ChangeMusic.performed += instance.OnChangeMusic;
+                @ChangeMusic.canceled += instance.OnChangeMusic;
             }
         }
     }
@@ -174,5 +203,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
     public interface IGamePlayActions
     {
         void OnTurn(InputAction.CallbackContext context);
+        void OnChangeMusic(InputAction.CallbackContext context);
     }
 }

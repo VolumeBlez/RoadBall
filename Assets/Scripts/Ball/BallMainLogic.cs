@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -8,16 +9,20 @@ public class BallMainLogic : MonoBehaviour
     private BallData _data;
     private Rigidbody2D _rb;
 
+    public Action<int> TurnCountChanged;
+
     public void Init(CameraRotate rotateCamera, BallStateData stateData, BallData data) 
     {
         _stateData = stateData;
         _data = data;
         _rotateCamera = rotateCamera;
 
+        _rb = GetComponent<Rigidbody2D>();
+
         _stateData.CurrentDirection = Vector2.up;
         _rotateCamera = rotateCamera;
         _stateData.CurrentSpeed = _data.DefaultSpeed;
-        _rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void FixedUpdate() 
@@ -33,20 +38,12 @@ public class BallMainLogic : MonoBehaviour
 
     public void ChangeCurrentDirection()
     {
-        _rotateCamera.RandomRotate();
+        _rotateCamera.RandomRotateRelease();
         _stateData.CurrentDirection = _stateData.DirectionToTurn;
+
         _stateData.CountTurns++;
+        TurnCountChanged?.Invoke(_stateData.CountTurns);
 
-        _stateData.CurrentSpeed += _data.SpeedModifyFromTurns.Evaluate(_stateData.CountTurns++ * _data.ModifyMultiplier);
-        Debug.Log(_stateData.CurrentSpeed);
+        _stateData.CurrentSpeed += _data.SpeedModifyFromTurns.Evaluate(_stateData.CountTurns * _data.ModifyMultiplier);
     }
-
-    private void Rotate() 
-    {
-        Debug.Log("Rotate");
-        float rotZ = Mathf.Atan2(_stateData.DirectionToTurn.y, _stateData.DirectionToTurn.x) * Mathf.Rad2Deg;
-        _rb.MoveRotation(rotZ - 90f);
-    } 
-
-
 }

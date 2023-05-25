@@ -7,23 +7,27 @@ public class CorridorGenerator : MonoBehaviour
     [SerializeField] private List<Corridor> _corridorPrefabs; 
     private List<Corridor> _corridors;
 
+    private Corridor corVar;
+    private Vector3 posForNewCorridor;
+    private DirectionType dirType;
+    private List<Corridor> _corridorsWithNededDirectionType;
+
     public Action<Corridor> CurrentCorridorChanged;
 
     public void Init() 
     {
         _corridors = new();
+        _corridorsWithNededDirectionType = new();
         SpawnCorridor();
     }
 
     private void SpawnCorridor()
     {
-        Corridor corVar;
-        
         if(_corridors.Count != 0)
         {
-            List<Corridor> _corridorsWithNededDirectionType = new();
-            Vector3 posForNewCorridor = _corridors[_corridors.Count-1].End.position;
-            DirectionType dirType = _corridors[_corridors.Count-1].EndDirection;
+            _corridorsWithNededDirectionType.Clear();
+            posForNewCorridor = _corridors[_corridors.Count-1].End.position;
+            dirType = _corridors[_corridors.Count-1].EndDirection;
 
             foreach (var cor in _corridorPrefabs)
             {

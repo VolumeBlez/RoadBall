@@ -13,16 +13,25 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeMusic",
+                    "type": "Button",
+                    "id": "b455c109-b691-4601-b1d7-7a71b5192726",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "4fe3e133-2603-463d-8c5f-43dbf7dcb3df",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Joystick>/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "New control scheme",
+                    "groups": "",
                     "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -35,6 +44,17 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c33ce0f0-9b3c-48ff-918b-da077bde1639",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeMusic",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

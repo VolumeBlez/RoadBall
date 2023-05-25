@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5937402780713162308}
   - component: {fileID: 2162521989428305068}
   - component: {fileID: 3944149033623098565}
-  - component: {fileID: 7166568741766587499}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -79,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -180,7 +179,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.08
+  m_Time: 2.5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -188,8 +187,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.022346497
-        value: 0.72956276
+        time: 0.0055885315
+        value: 0.50943947
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -206,8 +205,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.58935463
-        value: 0.24528398
+        time: 0.8211967
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -220,7 +219,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 0, b: 0.90769243, a: 1}
-      key1: {r: 0.6238532, g: 1, b: 0, a: 1}
+      key1: {r: 0, g: 0.3077016, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 1, g: 1, b: 1, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -228,7 +227,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 26214
+      ctime1: 31033
       ctime2: 57440
       ctime3: 48188
       ctime4: 0
@@ -249,7 +248,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 1
+    textureMode: 0
     shadowBias: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -270,7 +269,6 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 6691d4496fa636d4bac28a50831e9bf5, type: 2}
   _logic: {fileID: 3944149033623098565}
   _checkCollision: {fileID: 2162521989428305068}
-  _input: {fileID: 7166568741766587499}
 --- !u!114 &2162521989428305068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,17 +291,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2eb6f2b3aa83ef4db02ef78825a4e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7166568741766587499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5937402780713162311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc933195e75d5640b703e7111c75739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
