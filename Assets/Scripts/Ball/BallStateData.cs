@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public struct BallStateData 
+public class BallStateData 
 {
     public Vector2 DirectionToTurn;
     public Vector2 CurrentDirection;

@@ -10,6 +10,7 @@ public class MusicPlayer : MonoBehaviour
     {
         _source.Stop();
         _source.PlayOneShot(_clips[Random.Range(0, _clips.Length)]);
+
     }
 
     public void LateUpdate() 

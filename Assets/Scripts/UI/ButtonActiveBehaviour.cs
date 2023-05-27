@@ -3,32 +3,39 @@ using UnityEngine;
 
 public class ButtonActiveBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject _reloadButton;
-    [SerializeField] private GameObject _screenTapButton;
+
+    [SerializeField] private GameObject[] _UIElementsToEnable;
+    [SerializeField] private GameObject[] _UIElementsToDisable;
 
     private Ball _ball;
 
     public void Init(Ball ball) 
     {
         _ball = ball;
-        ball.DeathCollisionCheck.PlayerDie += EnableReloadButton;
-        ball.DeathCollisionCheck.PlayerDie += DisableScreenTapButton;
+        ball.DeathCollisionCheck.PlayerDie += EnableUIElements;
+        ball.DeathCollisionCheck.PlayerDie += DisableUIElements;
     }
 
 
     private void OnDisable()
     {
-        _ball.DeathCollisionCheck.PlayerDie -= EnableReloadButton;
-        _ball.DeathCollisionCheck.PlayerDie -= DisableScreenTapButton;
+        _ball.DeathCollisionCheck.PlayerDie -= EnableUIElements;
+        _ball.DeathCollisionCheck.PlayerDie -= DisableUIElements;
     }
 
-    private void EnableReloadButton()
+    private void EnableUIElements()
     {
-        _reloadButton.SetActive(true);
+        foreach (var item in _UIElementsToEnable)
+        {
+            item.SetActive(true);
+        }
     }
 
-    private void DisableScreenTapButton()
+    private void DisableUIElements()
     {
-        _screenTapButton.SetActive(false);
+        foreach (var item in _UIElementsToDisable)
+        {
+            item.SetActive(false);
+        }
     }
 }

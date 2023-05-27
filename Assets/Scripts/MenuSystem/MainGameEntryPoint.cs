@@ -18,6 +18,7 @@ public class MainGameEntryPoint : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private UIScore _score;
+    [SerializeField] private UIBestScore _bestScore;
 
     private void Start() 
     {
@@ -33,5 +34,6 @@ public class MainGameEntryPoint : MonoBehaviour
 
         _particleInvoker.Init(ball);
         _score.Init(ball);
+        _bestScore.Init(ball.BestScoreChanger);
     }
 }

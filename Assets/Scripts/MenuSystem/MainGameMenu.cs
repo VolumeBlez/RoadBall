@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class MainGameMenu : MonoBehaviour
@@ -9,5 +8,6 @@ public class MainGameMenu : MonoBehaviour
     {
         _loader.LoadGameLevel();
     }
+
 
 }
